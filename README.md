@@ -6,7 +6,7 @@ The goal: a scalable, automated, monitored and secure IaaS platform, then a Kube
 
 > This repository documents the architecture and results. The infrastructure ran on VMware VMs in the lab and was not itself version-controlled, so this is a write-up with real screenshots rather than source code.
 
-![Global architecture](screenshots/global-architecture.png)
+![Global architecture](global-architecture.png)
 
 ---
 
@@ -39,34 +39,34 @@ Over the year the team rotated through every layer as we each learned it. What I
 
 ### OpenStack running — Neutron network agents across the nodes
 Open vSwitch, L3 and DHCP agents up across controller and compute hosts.
-![Neutron agents](screenshots/openstack-neutron-agents.png)
+![Neutron agents](openstack-neutron-agents.png)
 
 ### Compute host (KVM/QEMU)
 A Nova compute node running the KVM/QEMU hypervisor, reporting load and uptime.
-![Hypervisor](screenshots/openstack-hypervisor.png)
+![Hypervisor](openstack-hypervisor.png)
 
 ### Cinder block storage (LVM)
 Volumes provisioned through Cinder, backed by an LVM thin pool.
-![Cinder volumes](screenshots/cinder-volumes-lsblk.png)
+![Cinder volumes](cinder-volumes-lsblk.png)
 
 ### OpenStack Horizon — live cloud usage
 The Horizon dashboard showing real consumption across the platform: 3 instances, 53 volumes, 436 GB of volume storage, networks, routers and floating IPs.
-![Horizon overview](screenshots/horizon-overview.png)
+![Horizon overview](horizon-overview.png)
 
 ### Network topology
 Tenant network, router and instances as seen in Horizon.
-![Network topology](screenshots/horizon-network-topology.png)
+![Network topology](horizon-network-topology.png)
 
 ### Kubernetes monitoring stack
 The full kube-prometheus-stack (Prometheus, Grafana, Alertmanager, node-exporters) running in the `monitoring` namespace.
-![Monitoring pods](screenshots/kubernetes-monitoring-pods.png)
+![Monitoring pods](kubernetes-monitoring-pods.png)
 
 Grafana querying node-exporter metrics (`instance:node_cpu:ratio`) from the cluster:
-![Grafana node metrics](screenshots/grafana-node-metrics.png)
+![Grafana node metrics](grafana-node-metrics.png)
 
 ### Horizontal Pod Autoscaler in action
 Under CPU load the HPA scaled the deployment from 1 to 5 replicas automatically, then back down.
-![Autoscaling](screenshots/kubernetes-autoscaling.png)
+![Autoscaling](kubernetes-autoscaling.png)
 
 ---
 
